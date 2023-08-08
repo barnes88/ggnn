@@ -17,12 +17,12 @@ limitations under the License.
 #ifndef INCLUDE_GGNN_QUERY_CUDA_KNN_QUERY_LAYER_CUH_
 #define INCLUDE_GGNN_QUERY_CUDA_KNN_QUERY_LAYER_CUH_
 
-#include <algorithm>
-#include <limits>
-
 #include <cuda.h>
 #include <cuda_runtime.h>
+
+#include <algorithm>
 #include <cub/cub.cuh>
+#include <limits>
 
 // #include "ggnn/cache/cuda_knn_sorted_buffer_cache.cuh"
 #include "ggnn/cache/cuda_simple_knn_cache.cuh"
@@ -62,7 +62,9 @@ struct QueryKernel {
             << " CACHE_SIZE: " << CACHE_SIZE << " SORTED_SIZE: " << SORTED_SIZE
             << " || BEST_SIZE: " << BEST_SIZE << " PRIOQ_SIZE: " << PRIOQ_SIZE
             << " VISITED_SIZE: " << VISITED_SIZE;
+    cudaProfilerStart();
     query<<<N, BLOCK_DIM_X, 0, stream>>>((*this));
+    cudaProfilerStop();
   }
 
   __device__ __forceinline__ void operator()() const {
@@ -138,14 +140,14 @@ struct QueryKernel {
 
   const float* d_nn1_stats;  // [sum,max]
 
-  int* d_dist_stats;          // [Nq]
+  int* d_dist_stats;  // [Nq]
 
   int N;         // number of points to query for -> Nq
   int N_offset;  // gpu offset in N
   int N_base;    // number of points in the dataset
 
-  int num_parts {1};
-  int part      {0};
+  int num_parts{1};
+  int part{0};
 };
 
 #endif  // INCLUDE_GGNN_QUERY_CUDA_KNN_QUERY_LAYER_CUH_
