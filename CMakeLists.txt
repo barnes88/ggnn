@@ -64,14 +64,14 @@ target_link_libraries(sift10k_multi ${CUDA_curand_LIBRARY} glog::glog)
 # )
 # target_link_libraries(sift1b_subsets ${CUDA_curand_LIBRARY} glog::glog)
 
-# cuda_add_executable(sift1b_multi src/sift1b_multi_gpu.cu)
-# target_include_directories(sift1b_multi
-#   PRIVATE
-#   ${CUDA_NVCC_FLAGS}
-#   ${CUB_INCLUDE_PATH}
-#   ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# target_link_libraries(sift1b_multi ${CUDA_curand_LIBRARY} glog::glog)
+cuda_add_executable(sift1b_multi src/sift1b_multi_gpu.cu)
+target_include_directories(sift1b_multi
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(sift1b_multi ${CUDA_curand_LIBRARY} glog::glog)
 
 # cuda_add_executable(sift1b_multi_top10 src/sift1b_multi_gpu_top10.cu)
 # target_include_directories(sift1b_multi_top10
@@ -82,14 +82,14 @@ target_link_libraries(sift10k_multi ${CUDA_curand_LIBRARY} glog::glog)
 # )
 # target_link_libraries(sift1b_multi_top10 ${CUDA_curand_LIBRARY} glog::glog)
 
-# cuda_add_executable(deep1b_multi src/deep1b_multi_gpu.cu)
-# target_include_directories(deep1b_multi
-#   PRIVATE
-#   ${CUDA_NVCC_FLAGS}
-#   ${CUB_INCLUDE_PATH}
-#   ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# target_link_libraries(deep1b_multi ${CUDA_curand_LIBRARY} glog::glog)
+cuda_add_executable(deep1b_multi src/deep1b_multi_gpu.cu)
+target_include_directories(deep1b_multi
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(deep1b_multi ${CUDA_curand_LIBRARY} glog::glog)
 
 # cuda_add_executable(sift1m_stats src/sift1m_stats.cu)
 # target_include_directories(sift1m_stats
@@ -163,32 +163,32 @@ target_link_libraries(sift10k_multi ${CUDA_curand_LIBRARY} glog::glog)
 # )
 # target_link_libraries(sift1m_top100 ${CUDA_curand_LIBRARY} glog::glog)
 
-# cuda_add_executable(nytimes src/nytimes.cu)
-# target_include_directories(nytimes
-#   PRIVATE
-#   ${CUDA_NVCC_FLAGS}
-#   ${CUB_INCLUDE_PATH}
-#   ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# target_link_libraries(nytimes ${CUDA_curand_LIBRARY} glog::glog)
+cuda_add_executable(nytimes src/nytimes.cu)
+target_include_directories(nytimes
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(nytimes ${CUDA_curand_LIBRARY} glog::glog)
 
-# cuda_add_executable(nytimes_top10 src/nytimes_top10.cu)
-# target_include_directories(nytimes_top10
-#   PRIVATE
-#   ${CUDA_NVCC_FLAGS}
-#   ${CUB_INCLUDE_PATH}
-#   ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# target_link_libraries(nytimes_top10 ${CUDA_curand_LIBRARY} glog::glog)
+cuda_add_executable(nytimes_top10 src/nytimes_top10.cu)
+target_include_directories(nytimes_top10
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(nytimes_top10 ${CUDA_curand_LIBRARY} glog::glog)
 
-# cuda_add_executable(glove200 src/glove200.cu)
-# target_include_directories(glove200
-#   PRIVATE
-#   ${CUDA_NVCC_FLAGS}
-#   ${CUB_INCLUDE_PATH}
-#   ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# target_link_libraries(glove200 ${CUDA_curand_LIBRARY} glog::glog)
+cuda_add_executable(glove200 src/glove200.cu)
+target_include_directories(glove200
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(glove200 ${CUDA_curand_LIBRARY} glog::glog)
 
 cuda_add_executable(gist src/gist.cu)
 target_include_directories(gist
@@ -198,3 +198,39 @@ target_include_directories(gist
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_link_libraries(gist ${CUDA_curand_LIBRARY} glog::glog)
+
+cuda_add_executable(fashion-mnist src/fashion-mnist.cu)
+target_include_directories(fashion-mnist
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(fashion-mnist ${CUDA_curand_LIBRARY} glog::glog)
+
+cuda_add_executable(mnist src/mnist.cu)
+target_include_directories(mnist
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(mnist ${CUDA_curand_LIBRARY} glog::glog)
+
+cuda_add_executable(last-fm src/last-fm.cu)
+target_include_directories(last-fm
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(last-fm ${CUDA_curand_LIBRARY} glog::glog)
+
+cuda_add_executable(deep1b src/deep1b.cu)
+target_include_directories(deep1b
+  PRIVATE
+  ${CUDA_NVCC_FLAGS}
+  ${CUB_INCLUDE_PATH}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(deep1b ${CUDA_curand_LIBRARY} glog::glog)
